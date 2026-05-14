@@ -23,7 +23,7 @@ export interface TrainerDashboardMock {
 }
 
 export const trainerDashboardMock: TrainerDashboardMock = {
-  teamName: "Sweat & Regret · East Bay chapter",
+  teamName: "Sweat & Regret · Murrieta chapter",
   stats: {
     totalAthletes: 28,
     checkedIn: 21,

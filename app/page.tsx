@@ -12,6 +12,7 @@ import { RecoveryScoreCard } from "@/components/recovery-score-card";
 import { StreakCard } from "@/components/streak-card";
 import { TrendPlaceholder } from "@/components/trend-placeholder";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { athleteHomeMock } from "@/mock-data/athlete";
 
 const metricIcons = {
@@ -32,6 +33,30 @@ export default function AthleteHomePage() {
         score={data.recoveryScore}
         message={data.statusMessage}
       />
+
+      <Card className="overflow-hidden border-white/10 bg-gradient-to-br from-emerald-500/10 via-slate-900/80 to-slate-900/60 shadow-xl backdrop-blur-sm">
+        <CardContent className="space-y-4 p-6">
+          <div className="space-y-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400/85">
+              Private Recovery Suite
+            </p>
+            <p className="text-xl font-semibold tracking-tight text-slate-50">
+              25-minute contrast therapy
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Sauna + cold plunge access
+            </p>
+          </div>
+
+          <Button
+            asChild
+            size="lg"
+            className="min-h-14 w-full rounded-2xl text-base shadow-lg shadow-emerald-900/35"
+          >
+            <Link href="/suite">Reserve Session</Link>
+          </Button>
+        </CardContent>
+      </Card>
 
       <Button
         asChild

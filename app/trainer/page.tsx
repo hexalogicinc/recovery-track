@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   AlertTriangle,
   CheckCircle2,
+  CalendarPlus,
   Users,
   XCircle,
 } from "lucide-react";
@@ -10,6 +11,8 @@ import { AthleteRowCard } from "@/components/athlete-row-card";
 import { PageHeader } from "@/components/page-header";
 import { SendReminderButton } from "@/components/send-reminder-button";
 import { TrainerStatCard } from "@/components/trainer-stat-card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { trainerDashboardMock } from "@/mock-data/trainer";
 
 export default function TrainerDashboardPage() {
@@ -67,6 +70,55 @@ export default function TrainerDashboardPage() {
             <AthleteRowCard key={a.id} athlete={a} />
           ))}
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            Quick reserve
+          </p>
+          <span className="text-xs text-muted-foreground">Trainer shortcut</span>
+        </div>
+
+        <Card className="border-white/10 bg-slate-900/65 backdrop-blur-sm">
+          <CardContent className="space-y-4 p-5">
+            <div className="space-y-1">
+              <p className="text-sm font-semibold tracking-tight text-slate-50">
+                Reserve the private suite for a client
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Uses the same premium booking flow—just pre-fills who it’s for.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2">
+              {athletes.slice(0, 3).map((a) => (
+                <Button
+                  key={a.id}
+                  asChild
+                  variant="outline"
+                  className="min-h-12 justify-between rounded-2xl border-white/15 bg-transparent px-4"
+                >
+                  <Link
+                    href={`/suite/book?coach=1&clientId=${encodeURIComponent(
+                      a.id,
+                    )}&clientName=${encodeURIComponent(a.name)}`}
+                  >
+                    <span className="truncate text-left">{a.name}</span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-300/90">
+                      <CalendarPlus className="h-4 w-4" aria-hidden />
+                      Reserve
+                    </span>
+                  </Link>
+                </Button>
+              ))}
+            </div>
+
+            <p className="text-[11px] text-muted-foreground">
+              Tip: pick a time on the next screen, then confirm the suite.
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="sticky bottom-0 -mx-4 border-t border-white/10 bg-[hsl(222_47%_6%)]/90 px-4 pb-2 pt-4 backdrop-blur-md">
