@@ -9,7 +9,6 @@ import {
 
 import { AthleteRowCard } from "@/components/athlete-row-card";
 import { PageHeader } from "@/components/page-header";
-import { SendReminderButton } from "@/components/send-reminder-button";
 import { TrainerStatCard } from "@/components/trainer-stat-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,7 +18,7 @@ export default function TrainerDashboardPage() {
   const { teamName, stats, athletes } = trainerDashboardMock;
 
   return (
-    <div className="flex flex-1 flex-col gap-6 pb-24">
+    <div className="flex flex-1 flex-col gap-6 pb-6">
       <div className="flex items-start justify-between gap-3">
         <PageHeader title="Club roster" subtitle={teamName} />
         <Link
@@ -119,10 +118,6 @@ export default function TrainerDashboardPage() {
             </p>
           </CardContent>
         </Card>
-      </div>
-
-      <div className="sticky bottom-0 -mx-4 border-t border-white/10 bg-[hsl(222_47%_6%)]/90 px-4 pb-2 pt-4 backdrop-blur-md">
-        <SendReminderButton />
       </div>
     </div>
   );
