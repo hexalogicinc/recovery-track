@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 
 import { CheckCircle2, CalendarPlus } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -87,6 +87,14 @@ function generateIcsEvent(params: {
 }
 
 export default function SuiteConfirmPage() {
+  return (
+    <Suspense>
+      <SuiteConfirmContent />
+    </Suspense>
+  );
+}
+
+function SuiteConfirmContent() {
   const sp = useSearchParams();
   const dateIso = sp.get("date") ?? "";
   const timeLabel = sp.get("time") ?? "";

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { CompactDateSelector } from "@/components/suite/compact-date-selector";
@@ -36,6 +36,14 @@ function formatFullDate(ymd: string) {
 }
 
 export default function SuiteBookingPage() {
+  return (
+    <Suspense>
+      <SuiteBookingContent />
+    </Suspense>
+  );
+}
+
+function SuiteBookingContent() {
   const sp = useSearchParams();
   const coach = sp.get("coach") === "1";
   const clientName = sp.get("clientName") ?? "";

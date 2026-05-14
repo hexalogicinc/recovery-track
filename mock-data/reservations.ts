@@ -63,10 +63,11 @@ export function getMockSuiteDays(now = new Date()): SuiteDay[] {
   });
 
   // A couple intentionally unavailable times to show subtle disabled styling.
-  const disabledByDayOffset: Record<number, Set<(typeof TIME_LABELS)[number]>> = {
-    0: new Set(["10:30 AM"]),
-    1: new Set(["9:30 AM", "11:00 AM"]),
-    2: new Set(["9:00 AM"]),
+  type TimeLabel = (typeof TIME_LABELS)[number];
+  const disabledByDayOffset: Record<number, Set<TimeLabel>> = {
+    0: new Set<TimeLabel>(["10:30 AM"]),
+    1: new Set<TimeLabel>(["9:30 AM", "11:00 AM"]),
+    2: new Set<TimeLabel>(["9:00 AM"]),
   };
 
   return days.map((d, dayOffset) => {
